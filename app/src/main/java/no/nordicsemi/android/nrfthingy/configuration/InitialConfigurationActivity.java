@@ -369,6 +369,9 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
         mThingyInfoContainer = findViewById(R.id.thingy_container);
         mDeviceNameContainer = findViewById(R.id.device_name_container);
         mUserNameContainer = findViewById(R.id.user_name_container);
+        mUserAgeContainer = findViewById(R.id.user_age_container);
+        mUserGenderContainer = findViewById(R.id.user_gender_container);
+        mPlaceNameContainer = findViewById(R.id.place_name_container);
         mSetupCompleteContainer = findViewById(R.id.setup_complete_container);
         mLocationServicesContainer = findViewById(R.id.location_services_container);
         mEnableLocationServices = findViewById(R.id.enable_location_services);
@@ -1002,8 +1005,8 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
                                 mThingySdkManager.setUserName(mDevice, mUserGender);
                             }
                         }
-                        mUserAgeContainer.setVisibility(View.GONE);
-                        mUserGenderContainer.setVisibility(View.VISIBLE);
+                        mUserGenderContainer.setVisibility(View.GONE);
+                        mPlaceNameContainer.setVisibility(View.VISIBLE);
                         mView.setVisibility(View.GONE);
                         mSpace.setVisibility(View.GONE);
 
@@ -1036,8 +1039,8 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
                                 mThingySdkManager.setUserAge(mDevice, mPlaceName);
                             }
                         }
-                        mUserGenderContainer.setVisibility(View.GONE);
-                        mPlaceNameContainer.setVisibility(View.VISIBLE);
+                        mPlaceNameContainer.setVisibility(View.GONE);
+//                        mPlaceNameContainer.setVisibility(View.VISIBLE);
                         mView.setVisibility(View.GONE);
                         mSpace.setVisibility(View.GONE);
 

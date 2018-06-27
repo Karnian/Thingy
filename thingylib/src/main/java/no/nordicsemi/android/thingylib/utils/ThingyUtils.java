@@ -72,6 +72,10 @@ public class ThingyUtils {
     public static final UUID THINGY_BASE_UUID                                                   = new UUID(0xEF6801009B354933L, 0x9B1052FFA9740042L);
     public static final UUID THINGY_CONFIGURATION_SERVICE                                       = new UUID(0xEF6801009B354933L, 0x9B1052FFA9740042L);
     public static final UUID DEVICE_NAME_CHARACTERISTIC_UUID                                    = new UUID(0xEF6801019B354933L, 0x9B1052FFA9740042L);
+    public static final UUID USER_NAME_CHARACTERISTIC_UUID                                    = new UUID(0xEF6801019B354933L, 0x9B1052FFA9740042L);
+    public static final UUID USER_AGE_CHARACTERISTIC_UUID                                    = new UUID(0xEF6801019B354933L, 0x9B1052FFA9740042L);
+    public static final UUID USER_GENDER_CHARACTERISTIC_UUID                                    = new UUID(0xEF6801019B354933L, 0x9B1052FFA9740042L);
+    public static final UUID PLACE_NAME_CHARACTERISTIC_UUID                                    = new UUID(0xEF6801019B354933L, 0x9B1052FFA9740042L);
     public static final UUID ADVERTISING_PARAM_CHARACTERISTIC_UUID                              = new UUID(0xEF6801029B354933L, 0x9B1052FFA9740042L);
     public static final UUID APPEARANCE_CHARACTERISTIC_UUID                                     = new UUID(0xEF6801039B354933L, 0x9B1052FFA9740042L);
     public static final UUID CONNECTION_PARAM_CHARACTERISTIC_UUID                               = new UUID(0xEF6801049B354933L, 0x9B1052FFA9740042L);

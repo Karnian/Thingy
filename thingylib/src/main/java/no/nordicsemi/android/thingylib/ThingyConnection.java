@@ -291,6 +291,10 @@ public class ThingyConnection extends BluetoothGattCallback {
         mThingyConfigurationService = gatt.getService(ThingyUtils.THINGY_CONFIGURATION_SERVICE);
         if (mThingyConfigurationService != null) {
             mDeviceNameCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.DEVICE_NAME_CHARACTERISTIC_UUID);
+            mUserNameCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.USER_NAME_CHARACTERISTIC_UUID);
+            mUserAgeCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.USER_AGE_CHARACTERISTIC_UUID);
+            mUserGenderCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.USER_GENDER_CHARACTERISTIC_UUID);
+            mPlaceNameCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.PLACE_NAME_CHARACTERISTIC_UUID);
             mAdvertisingParamCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.ADVERTISING_PARAM_CHARACTERISTIC_UUID);
             mConnectionParamCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.CONNECTION_PARAM_CHARACTERISTIC_UUID);
             mEddystoneUrlCharacteristic = mThingyConfigurationService.getCharacteristic(ThingyUtils.EDDYSTONE_URL_CHARACTERISTIC_UUID);
