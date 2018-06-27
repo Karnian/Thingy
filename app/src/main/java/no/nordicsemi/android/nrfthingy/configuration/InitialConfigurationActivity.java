@@ -125,20 +125,40 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
     private static final int SCAN_DURATION = 15000;
     private LinearLayout mThingyInfoContainer;
     private LinearLayout mDeviceNameContainer;
+    private LinearLayout mUserNameContainer;
+    private LinearLayout mUserAgeContainer;
+    private LinearLayout mUserGenderContainer;
+    private LinearLayout mPlaceNameContainer;
     private LinearLayout mSetupCompleteContainer;
     private LinearLayout mLocationServicesContainer;
 
     private TextInputEditText mDeviceInfo;
+    private TextInputEditText mUserNameInfo;
+    private TextInputEditText mUserAgeInfo;
+    private TextInputEditText mUserGenderInfo;
+    private TextInputEditText mPlaceNameInfo;
     private TextView mEnableLocationServices;
 
     private Button mConfirmThingy;
     private Button mConfirmDeviceName;
     private Button mSkipDeviceName;
+    private Button mConfirmUserName;
+    private Button mSkipUserName;
+    private Button mConfirmUserAge;
+    private Button mSkipUserAge;
+    private Button mConfirmUserGender;
+    private Button mSkipUserGender;
+    private Button mConfirmPlaceName;
+    private Button mSkipPlaceName;
     private Button mGetStarted;
     private LinearLayout mNfcContainer;
 
     private TextView mStepOne;
     private TextView mStepTwo;
+    private TextView mStepThree;
+    private TextView mStepFour;
+    private TextView mStepFive;
+    private TextView mStepSix;
     private TextView mStepOneSummary;
 
     private View mView;
@@ -148,8 +168,16 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
 
     private boolean mStepOneComplete;
     private boolean mStepTwoComplete;
+    private boolean mStepThreeComplete;
+    private boolean mStepFourComplete;
+    private boolean mStepFiveComplete;
+    private boolean mStepSixComplete;
 
     private String mDeviceName;
+    private String mUserName;
+    private String mUserAge;
+    private String mUserGender;
+    private String mPlaceName;
     private String mFirmwareFileVersion;
 
     private boolean mConfig;
@@ -340,6 +368,7 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
 
         mThingyInfoContainer = findViewById(R.id.thingy_container);
         mDeviceNameContainer = findViewById(R.id.device_name_container);
+        mUserNameContainer = findViewById(R.id.user_name_container);
         mSetupCompleteContainer = findViewById(R.id.setup_complete_container);
         mLocationServicesContainer = findViewById(R.id.location_services_container);
         mEnableLocationServices = findViewById(R.id.enable_location_services);
@@ -347,16 +376,32 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
         mScrollView = findViewById(R.id.scroll_view);
 
         mDeviceInfo = findViewById(R.id.device_name);
+        mUserNameInfo = findViewById(R.id.user_name);
+        mUserAgeInfo = findViewById(R.id.user_age);
+        mUserGenderInfo = findViewById(R.id.user_gender);
+        mPlaceNameInfo = findViewById(R.id.place_name);
         mNfcContainer = findViewById(R.id.nfc_container);
         final TextView mEnableNfc = findViewById(R.id.enable_nfc);
         final TextView mNfcMore = findViewById(R.id.dismiss_nfc);
         mConfirmThingy = findViewById(R.id.confirm_thingy);
         mConfirmDeviceName = findViewById(R.id.confirm_device_name);
         mSkipDeviceName = findViewById(R.id.skip_device_name);
+        mConfirmUserName = findViewById(R.id.confirm_user_name);
+        mSkipUserName = findViewById(R.id.skip_device_name);
+        mConfirmUserAge = findViewById(R.id.confirm_user_age);
+        mSkipUserAge = findViewById(R.id.skip_user_age);
+        mConfirmUserGender = findViewById(R.id.confirm_user_gender);
+        mSkipUserGender = findViewById(R.id.skip_user_gender);
+        mConfirmPlaceName = findViewById(R.id.confirm_place_name);
+        mSkipPlaceName = findViewById(R.id.skip_place_name);
         mGetStarted = findViewById(R.id.get_started);
 
         mStepOne = findViewById(R.id.step_one);
         mStepTwo = findViewById(R.id.step_two);
+        mStepThree = findViewById(R.id.step_three);
+        mStepFour = findViewById(R.id.step_four);
+        mStepFive = findViewById(R.id.step_five);
+        mStepSix = findViewById(R.id.step_six);
         mStepOneSummary = findViewById(R.id.step_one_summary);
         mView = findViewById(R.id.vertical_line);
         mSpace = findViewById(R.id.space);
@@ -396,6 +441,34 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
             @Override
             public void onClick(View v) {
                 animateOnStepTwoComplete();
+            }
+        });
+
+        mStepThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateOnStepThreeComplete();
+            }
+        });
+
+        mStepFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateOnStepFourComplete();
+            }
+        });
+
+        mStepFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateOnStepFiveComplete();
+            }
+        });
+
+        mStepSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateOnStepSixComplete();
             }
         });
 
@@ -448,6 +521,62 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
             }
         });
 
+        mConfirmUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateStepThree();
+            }
+        });
+
+        mSkipUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateStepThree();
+            }
+        });
+
+        mConfirmUserAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateStepFour();
+            }
+        });
+
+        mSkipUserAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateStepFour();
+            }
+        });
+
+        mConfirmUserGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateStepFive();
+            }
+        });
+
+        mSkipUserGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateStepFive();
+            }
+        });
+
+        mConfirmPlaceName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateStepSix();
+            }
+        });
+
+        mSkipPlaceName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateStepSix();
+            }
+        });
+
         mGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -465,6 +594,10 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() > 0) {
                     mConfirmDeviceName.setEnabled(true);
+                    mConfirmUserName.setEnabled(true);
+                    mConfirmUserAge.setEnabled(true);
+                    mConfirmUserGender.setEnabled(true);
+                    mConfirmPlaceName.setEnabled(true);
                 }
             }
 
@@ -478,6 +611,10 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
             mDevice = savedInstanceState.getParcelable(Utils.EXTRA_DEVICE);
             mStepOneComplete = savedInstanceState.getBoolean("Step1", false);
             mStepTwoComplete = savedInstanceState.getBoolean("Step2", false);
+            mStepThreeComplete = savedInstanceState.getBoolean("Step3", false);
+            mStepFourComplete = savedInstanceState.getBoolean("Step4", false);
+            mStepFiveComplete = savedInstanceState.getBoolean("Step5", false);
+            mStepSixComplete = savedInstanceState.getBoolean("Step6", false);
             mAddressNfc = savedInstanceState.getString("ADDRESS_FOR_NFC");
             if(mProgressDialog != null){
                 if(savedInstanceState.getBoolean("IS_SCANNING")) {
@@ -493,6 +630,22 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
 
             if (mStepTwoComplete) {
                 animateStepTwo();
+            }
+
+            if (mStepThreeComplete) {
+                animateStepThree();
+            }
+
+            if (mStepFourComplete) {
+                animateStepFour();
+            }
+
+            if (mStepFiveComplete) {
+                animateStepFive();
+            }
+
+            if (mStepSixComplete) {
+                animateStepSix();
             }
         }
 
@@ -594,6 +747,10 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
         outState.putParcelable(Utils.EXTRA_DEVICE, mDevice);
         outState.putBoolean("Step1", mStepOneComplete);
         outState.putBoolean("Step2", mStepTwoComplete);
+        outState.putBoolean("Step3", mStepThreeComplete);
+        outState.putBoolean("Step4", mStepFourComplete);
+        outState.putBoolean("Step5", mStepFiveComplete);
+        outState.putBoolean("Step6", mStepSixComplete);
         outState.putString("ADDRESS_FOR_NFC", mAddressNfc);
         outState.putBoolean("IS_SCANNING", mIsScanning);
     }
@@ -744,6 +901,7 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
                             }
                         }
                         mDeviceNameContainer.setVisibility(View.GONE);
+                        mUserNameContainer.setVisibility(View.VISIBLE);
                         mView.setVisibility(View.GONE);
                         mSpace.setVisibility(View.GONE);
 
@@ -752,11 +910,146 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
                         mDeviceNameContainer.setTranslationX(0);
                         mDeviceNameContainer.clearAnimation();
                         mScrollView.fullScroll(View.FOCUS_DOWN);
-                        mSetupCompleteContainer.setVisibility(View.VISIBLE);
+//                        mSetupCompleteContainer.setVisibility(View.VISIBLE);
                     }
                 });
     }
 
+    private void animateStepThree() {
+        mStepThreeComplete = true;
+        mStepThree.setText("");
+        mStepThree.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(InitialConfigurationActivity.this, R.drawable.ic_done_white), null, null, null);
+
+        mUserNameContainer.animate()
+                .translationX(mUserNameContainer.getHeight())
+                .alpha(0.0f)
+                .setDuration(400)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mUserName = mDeviceInfo.getText().toString();
+                        if (mDevice != null && !mUserName.isEmpty()) {
+                            if (mThingySdkManager != null) {
+                                mThingySdkManager.setUserName(mDevice, mUserName);
+                            }
+                        }
+                        mUserNameContainer.setVisibility(View.GONE);
+                        mUserAgeContainer.setVisibility(View.VISIBLE);
+                        mView.setVisibility(View.GONE);
+                        mSpace.setVisibility(View.GONE);
+
+                        //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                        mUserNameContainer.setAlpha(1.0f);
+                        mUserNameContainer.setTranslationX(0);
+                        mUserNameContainer.clearAnimation();
+                        mScrollView.fullScroll(View.FOCUS_DOWN);
+//                        mSetupCompleteContainer.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    private void animateStepFour() {
+        mStepFourComplete = true;
+        mStepFour.setText("");
+        mStepFour.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(InitialConfigurationActivity.this, R.drawable.ic_done_white), null, null, null);
+
+        mUserAgeContainer.animate()
+                .translationX(mUserAgeContainer.getHeight())
+                .alpha(0.0f)
+                .setDuration(400)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mUserAge = mDeviceInfo.getText().toString();
+                        if (mDevice != null && !mUserAge.isEmpty()) {
+                            if (mThingySdkManager != null) {
+                                mThingySdkManager.setUserAge(mDevice, mUserAge);
+                            }
+                        }
+                        mUserAgeContainer.setVisibility(View.GONE);
+                        mUserGenderContainer.setVisibility(View.VISIBLE);
+                        mView.setVisibility(View.GONE);
+                        mSpace.setVisibility(View.GONE);
+
+                        //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                        mUserAgeContainer.setAlpha(1.0f);
+                        mUserAgeContainer.setTranslationX(0);
+                        mUserAgeContainer.clearAnimation();
+                        mScrollView.fullScroll(View.FOCUS_DOWN);
+//                        mSetupCompleteContainer.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    private void animateStepFive() {
+        mStepFiveComplete = true;
+        mStepFive.setText("");
+        mStepFive.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(InitialConfigurationActivity.this, R.drawable.ic_done_white), null, null, null);
+
+        mUserGenderContainer.animate()
+                .translationX(mUserGenderContainer.getHeight())
+                .alpha(0.0f)
+                .setDuration(400)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mUserGender = mDeviceInfo.getText().toString();
+                        if (mDevice != null && !mUserGender.isEmpty()) {
+                            if (mThingySdkManager != null) {
+                                mThingySdkManager.setUserName(mDevice, mUserGender);
+                            }
+                        }
+                        mUserAgeContainer.setVisibility(View.GONE);
+                        mUserGenderContainer.setVisibility(View.VISIBLE);
+                        mView.setVisibility(View.GONE);
+                        mSpace.setVisibility(View.GONE);
+
+                        //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                        mUserGenderContainer.setAlpha(1.0f);
+                        mUserGenderContainer.setTranslationX(0);
+                        mUserGenderContainer.clearAnimation();
+                        mScrollView.fullScroll(View.FOCUS_DOWN);
+//                        mSetupCompleteContainer.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    private void animateStepSix() {
+        mStepSixComplete = true;
+        mStepSix.setText("");
+        mStepSix.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(InitialConfigurationActivity.this, R.drawable.ic_done_white), null, null, null);
+
+        mPlaceNameContainer.animate()
+                .translationX(mPlaceNameContainer.getHeight())
+                .alpha(0.0f)
+                .setDuration(400)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mPlaceName = mDeviceInfo.getText().toString();
+                        if (mDevice != null && !mPlaceName.isEmpty()) {
+                            if (mThingySdkManager != null) {
+                                mThingySdkManager.setUserAge(mDevice, mPlaceName);
+                            }
+                        }
+                        mUserGenderContainer.setVisibility(View.GONE);
+                        mPlaceNameContainer.setVisibility(View.VISIBLE);
+                        mView.setVisibility(View.GONE);
+                        mSpace.setVisibility(View.GONE);
+
+                        //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                        mPlaceNameContainer.setAlpha(1.0f);
+                        mPlaceNameContainer.setTranslationX(0);
+                        mPlaceNameContainer.clearAnimation();
+                        mScrollView.fullScroll(View.FOCUS_DOWN);
+                        mSetupCompleteContainer.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
     private void animateOnStepOneComplete() {
         if (mStepOneComplete) {
             mThingyInfoContainer.setVisibility(View.VISIBLE);
@@ -803,10 +1096,190 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
     }
 
     private void animateOnStepTwoComplete() {
+        if (mStepTwoComplete) {
+            mThingyInfoContainer.setVisibility(View.VISIBLE);
+            mConfirmThingy.setText(R.string.disconnect_connect);
+            if (mUserNameContainer.getVisibility() == View.VISIBLE) {
+                mUserNameContainer.animate()
+                        .translationX(mUserNameContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                mUserNameContainer.setVisibility(View.GONE);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mUserNameContainer.setAlpha(1.0f);
+                                mUserNameContainer.setTranslationX(0);
+                                mUserNameContainer.clearAnimation();
+                            }
+                        });
+            } else {
+                mSetupCompleteContainer.animate()
+                        .translationY(mSetupCompleteContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mSetupCompleteContainer.setAlpha(1.0f);
+                                mSetupCompleteContainer.setTranslationY(0);
+                                mSetupCompleteContainer.clearAnimation();
+                            }
+                        });
+            }
+        }
+    }
+
+    private void animateOnStepThreeComplete() {
+        if (mStepThreeComplete) {
+            mThingyInfoContainer.setVisibility(View.VISIBLE);
+            mConfirmThingy.setText(R.string.disconnect_connect);
+            if (mUserNameContainer.getVisibility() == View.VISIBLE) {
+                mUserNameContainer.animate()
+                        .translationX(mUserNameContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                mUserNameContainer.setVisibility(View.GONE);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mUserNameContainer.setAlpha(1.0f);
+                                mUserNameContainer.setTranslationX(0);
+                                mUserNameContainer.clearAnimation();
+                            }
+                        });
+            } else {
+                mSetupCompleteContainer.animate()
+                        .translationY(mSetupCompleteContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mSetupCompleteContainer.setAlpha(1.0f);
+                                mSetupCompleteContainer.setTranslationY(0);
+                                mSetupCompleteContainer.clearAnimation();
+                            }
+                        });
+            }
+        }
+    }
+
+    private void animateOnStepFourComplete() {
+        if (mStepFourComplete) {
+            mThingyInfoContainer.setVisibility(View.VISIBLE);
+            mConfirmThingy.setText(R.string.disconnect_connect);
+            if (mUserAgeContainer.getVisibility() == View.VISIBLE) {
+                mUserAgeContainer.animate()
+                        .translationX(mUserAgeContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                mUserAgeContainer.setVisibility(View.GONE);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mUserAgeContainer.setAlpha(1.0f);
+                                mUserAgeContainer.setTranslationX(0);
+                                mUserAgeContainer.clearAnimation();
+                            }
+                        });
+            } else {
+                mSetupCompleteContainer.animate()
+                        .translationY(mSetupCompleteContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mSetupCompleteContainer.setAlpha(1.0f);
+                                mSetupCompleteContainer.setTranslationY(0);
+                                mSetupCompleteContainer.clearAnimation();
+                            }
+                        });
+            }
+        }
+    }
+
+    private void animateOnStepFiveComplete() {
+        if (mStepFiveComplete) {
+            mThingyInfoContainer.setVisibility(View.VISIBLE);
+            mConfirmThingy.setText(R.string.disconnect_connect);
+            if (mUserGenderContainer.getVisibility() == View.VISIBLE) {
+                mUserGenderContainer.animate()
+                        .translationX(mUserGenderContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                mUserGenderContainer.setVisibility(View.GONE);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mUserGenderContainer.setAlpha(1.0f);
+                                mUserGenderContainer.setTranslationX(0);
+                                mUserGenderContainer.clearAnimation();
+                            }
+                        });
+            } else {
+                mSetupCompleteContainer.animate()
+                        .translationY(mSetupCompleteContainer.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(400)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
+                                    mSetupCompleteContainer.setVisibility(View.GONE);
+
+                                //Resetting the animation parameters, if not the views are not visible in case they are made visible
+                                mSetupCompleteContainer.setAlpha(1.0f);
+                                mSetupCompleteContainer.setTranslationY(0);
+                                mSetupCompleteContainer.clearAnimation();
+                            }
+                        });
+            }
+        }
+    }
+//수정 필요
+    private void animateOnStepSixComplete() {
         if (mDevice != null) {
             final Thingy thingy = new Thingy(mDevice);
             if (Utils.isConnected(thingy, mThingySdkManager.getConnectedDevices())) {
-                if (mStepOneComplete) {
+                if (mStepSixComplete) {
                     if (mThingyInfoContainer.getVisibility() == View.VISIBLE) {
                         mThingyInfoContainer.animate()
                                 .translationX(mThingyInfoContainer.getHeight())
@@ -816,7 +1289,7 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
                                     @Override
                                     public void onAnimationEnd(Animator animation) {
                                         super.onAnimationEnd(animation);
-                                        mDeviceNameContainer.setVisibility(View.VISIBLE);
+                                        mPlaceNameContainer.setVisibility(View.VISIBLE);
                                         mThingyInfoContainer.setVisibility(View.GONE);
                                         if (mSetupCompleteContainer.getVisibility() == View.VISIBLE)
                                             mSetupCompleteContainer.setVisibility(View.GONE);

@@ -60,7 +60,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
             android:theme="@style/ActionBarThemeOverlay"
             app:popupTheme="@style/ActionBarPopupThemeOverlay"
             app:titleTextAppearance="@style/ActionBar.TitleText" />
@@ -425,14 +425,14 @@
                             android:paddingTop="@dimen/stepper_padding_top">
 
                             <LinearLayout
-                                android:id="@+id/device_user_container"
+                                android:id="@+id/user_name_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:visibility="gone">
 
                                 <android.support.design.widget.TextInputLayout
-                                    android:id="@+id/device_user_layout"
+                                    android:id="@+id/user_name_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
 
@@ -536,19 +536,19 @@
                             android:paddingTop="@dimen/stepper_padding_top">
 
                             <LinearLayout
-                                android:id="@+id/user_gender_container"
+                                android:id="@+id/user_age_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:visibility="gone">
 
                                 <android.support.design.widget.TextInputLayout
-                                    android:id="@+id/user_gender_layout"
+                                    android:id="@+id/user_age_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
 
                                     <android.support.design.widget.TextInputEditText
-                                        android:id="@+id/gender"
+                                        android:id="@+id/user_age"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:hint="@string/device_name_hint"
@@ -562,14 +562,14 @@
                                     android:orientation="horizontal">
 
                                     <Button
-                                        android:id="@+id/confirm_gender_name"
+                                        android:id="@+id/confirm_user_age"
                                         style="@style/Widget.AppCompat.Button.Colored"
                                         android:layout_width="wrap_content"
                                         android:layout_height="48dp"
                                         android:text="@string/confirm" />
 
                                     <Button
-                                        android:id="@+id/skip_gender_name"
+                                        android:id="@+id/skip_user_age"
                                         style="@style/Widget.AppCompat.Button.Colored"
                                         android:layout_width="wrap_content"
                                         android:layout_height="48dp"
@@ -645,19 +645,19 @@
                             android:paddingTop="@dimen/stepper_padding_top">
 
                             <LinearLayout
-                                android:id="@+id/user_height_container"
+                                android:id="@+id/user_gender_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:visibility="gone">
 
                                 <android.support.design.widget.TextInputLayout
-                                    android:id="@+id/height_layout"
+                                    android:id="@+id/user_gender_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
 
                                     <android.support.design.widget.TextInputEditText
-                                        android:id="@+id/height"
+                                        android:id="@+id/user_gender"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:hint="@string/device_name_hint"
@@ -671,14 +671,14 @@
                                     android:orientation="horizontal">
 
                                     <Button
-                                        android:id="@+id/confirm_height"
+                                        android:id="@+id/confirm_user_gender"
                                         style="@style/Widget.AppCompat.Button.Colored"
                                         android:layout_width="wrap_content"
                                         android:layout_height="48dp"
                                         android:text="@string/confirm" />
 
                                     <Button
-                                        android:id="@+id/skip_height"
+                                        android:id="@+id/skip_user_gender"
                                         style="@style/Widget.AppCompat.Button.Colored"
                                         android:layout_width="wrap_content"
                                         android:layout_height="48dp"
@@ -755,19 +755,19 @@
                             android:paddingTop="@dimen/stepper_padding_top">
 
                             <LinearLayout
-                                android:id="@+id/place_container"
+                                android:id="@+id/place_name_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:visibility="gone">
 
                                 <android.support.design.widget.TextInputLayout
-                                    android:id="@+id/place_layout"
+                                    android:id="@+id/place_name_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
 
                                     <android.support.design.widget.TextInputEditText
-                                        android:id="@+id/place"
+                                        android:id="@+id/place_name"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:hint="@string/device_name_hint"
@@ -781,14 +781,14 @@
                                     android:orientation="horizontal">
 
                                     <Button
-                                        android:id="@+id/place_name2"
+                                        android:id="@+id/confirm_place_name"
                                         style="@style/Widget.AppCompat.Button.Colored"
                                         android:layout_width="wrap_content"
                                         android:layout_height="48dp"
                                         android:text="@string/confirm" />
 
                                     <Button
-                                        android:id="@+id/place_name"
+                                        android:id="@+id/skip_place_name"
                                         style="@style/Widget.AppCompat.Button.Colored"
                                         android:layout_width="wrap_content"
                                         android:layout_height="48dp"

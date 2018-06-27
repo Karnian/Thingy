@@ -78,6 +78,10 @@ public class ThingyConnection extends BluetoothGattCallback {
 
     private static final String TAG = "ThingyConnection";
     private BluetoothGattCharacteristic mDeviceNameCharacteristic;
+    private BluetoothGattCharacteristic mUserNameCharacteristic;
+    private BluetoothGattCharacteristic mUserAgeCharacteristic;
+    private BluetoothGattCharacteristic mUserGenderCharacteristic;
+    private BluetoothGattCharacteristic mPlaceNameCharacteristic;
     private BluetoothGattCharacteristic mAdvertisingParamCharacteristic;
     private BluetoothGattCharacteristic mConnectionParamCharacteristic;
     private BluetoothGattCharacteristic mEddystoneUrlCharacteristic;
@@ -123,6 +127,10 @@ public class ThingyConnection extends BluetoothGattCallback {
 
     private boolean isConnected = false;
     private String mDeviceName;
+    private String mUserName;
+    private String mUserAge;
+    private String mUserGender;
+    private String mPlaceName;
 
     private int mAdvertisingIntervalUnits = -1;
     private int mAdvertisingIntervalTimeoutUnits = -1;
@@ -1025,6 +1033,47 @@ public class ThingyConnection extends BluetoothGattCallback {
         return null;
     }
 
+    final void setUserName(final String name) {
+        final byte[] data = name.getBytes();
+        add(RequestType.WRITE_CHARACTERISTIC, mUserNameCharacteristic, data, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
+    }
+
+    final String readUserName() {
+        if (mUserNameCharacteristic != null) {
+            return mUserName = mUserNameCharacteristic.getStringValue(0);
+        }
+
+        return null;
+    }
+
+    final void setUserAge(final String age) {
+        final byte[] data = age.getBytes();
+        add(RequestType.WRITE_CHARACTERISTIC, mUserAgeCharacteristic, data, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
+    }
+
+    final String readUserAge() {
+        if (mUserAgeCharacteristic != null) {
+            return mUserAge = mUserAgeCharacteristic.getStringValue(0);
+        }
+
+        return null;
+    }
+
+    final String readUserGender() {
+        if (mUserGenderCharacteristic != null) {
+            return mUserGender = mUserGenderCharacteristic.getStringValue(0);
+        }
+
+        return null;
+    }
+
+    final String readPlaceName() {
+        if (mDeviceNameCharacteristic != null) {
+            return mPlaceName = mPlaceNameCharacteristic.getStringValue(0);
+        }
+
+        return null;
+    }
     /**
      * Returns the advertising parameters for the particular thingy
      */

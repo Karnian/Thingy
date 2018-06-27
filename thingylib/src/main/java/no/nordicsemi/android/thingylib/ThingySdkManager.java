@@ -309,6 +309,75 @@ public class ThingySdkManager {
         return null;
     }
 
+    public void setUserName(final BluetoothDevice device, final String userName) {
+        if (device != null) {
+            if (mBinder != null) {
+                final ThingyConnection thingyConnection = mBinder.getThingyConnection(device);
+                if (thingyConnection != null) {
+                    thingyConnection.setUserName(userName);
+                }
+            }
+        }
+    }
+
+    public String getUserName(final BluetoothDevice device) {
+        if (device != null) {
+            if (mBinder != null) {
+                final ThingyConnection thingyConnection = mBinder.getThingyConnection(device);
+                if (thingyConnection != null) {
+                    return thingyConnection.readUserName();
+                }
+            }
+        }
+        return null;
+    }
+
+    public void setUserAge(final BluetoothDevice device, final String userAge) {
+        if (device != null) {
+            if (mBinder != null) {
+                final ThingyConnection thingyConnection = mBinder.getThingyConnection(device);
+                if (thingyConnection != null) {
+                    thingyConnection.setUserAge(userAge);
+                }
+            }
+        }
+    }
+
+    public String getUserAge(final BluetoothDevice device) {
+        if (device != null) {
+            if (mBinder != null) {
+                final ThingyConnection thingyConnection = mBinder.getThingyConnection(device);
+                if (thingyConnection != null) {
+                    return thingyConnection.readUserAge();
+                }
+            }
+        }
+        return null;
+    }
+
+    public String getUserGender(final BluetoothDevice device) {
+        if (device != null) {
+            if (mBinder != null) {
+                final ThingyConnection thingyConnection = mBinder.getThingyConnection(device);
+                if (thingyConnection != null) {
+                    return thingyConnection.readUserGender();
+                }
+            }
+        }
+        return null;
+    }
+
+    public String getPlaceName(final BluetoothDevice device) {
+        if (device != null) {
+            if (mBinder != null) {
+                final ThingyConnection thingyConnection = mBinder.getThingyConnection(device);
+                if (thingyConnection != null) {
+                    return thingyConnection.readPlaceName();
+                }
+            }
+        }
+        return null;
+    }
     /**
      * Configures the environment characteristic for a particular thingy
      *
