@@ -648,15 +648,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    // modified for auto-pairing using with prepareForScanning function
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (mDevice != null) {
+
             if (mThingySdkManager.isConnected(mDevice)) {
                 getMenuInflater().inflate(R.menu.main_menu_disconnect, menu);
-            } else {
+            }
+            else {
                 if (mDatabaseHelper.isExist(mDevice.getAddress())) {
-                    getMenuInflater().inflate(R.menu.main_menu_connect, menu);
-                } else {
+                    //if와 else를 또 추가하여 disconnect시에  pairing 해제 되도록 구현하기.
+                    /*
+                    if (R.id.action_disconnect>0) { //disconnect버튼을 눌렀을 시
+                        mThingySdkManager.disconnectFromThingy(mDevice);
+                        return true;
+                        //getMenuInflater().inflate(R.menu.main_menu_connect, menu);
+
+
+                    } else { //기기는 있는데, 연결이 되어있지 않은 경우
+                    }
+                    */
+                    prepareForScanning(false);
+                }
+                else {
                     Log.v(Utils.TAG, "DELETED");
                 }
             }
