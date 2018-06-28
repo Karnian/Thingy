@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DfuUpdateAvailableDialogFragment.DfuUpdateAvailableListener,
         NFCTagFoundDialogFragment.OnNfcTagFound, EnableNFCDialogFragment.EnableNFCDialogFragmentListener, DismissNfcWarningDialogFragment.NfcWarningDismissListener {
 
+    SendData SD = new SendData();
     private static final int SCAN_DURATION = 15000;
     private LinearLayout mLocationServicesContainer;
     private NavigationView mNavigationView;
@@ -690,9 +691,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.action_connect:
                 prepareForScanning(false);
                 break;
-            case R.id.action_disconnect:
+            case R.id.action_upload:
                 if (mThingySdkManager != null) {
-                    mThingySdkManager.disconnectFromThingy(mDevice);
+//                    mThingySdkManager.disconnectFromThingy(mDevice);
+                    //send data
+                    SD.createThingy();
                 }
                 break;
             case R.id.action_settings:

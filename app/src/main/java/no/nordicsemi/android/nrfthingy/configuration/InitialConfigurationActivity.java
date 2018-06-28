@@ -220,6 +220,29 @@ public class InitialConfigurationActivity extends AppCompatActivity implements S
         }
     };
 
+    public BluetoothDevice getmDevice() {
+        return this.mDevice;
+    }
+
+    public String getmDeviceName() {
+        return this.mDeviceName;
+    }
+
+    public String getmUserName() {
+        return this.mUserName;
+    }
+
+    public String getmUserAge() {
+        return this.mUserAge;
+    }
+
+    public String getmUserGender() {
+        return this.mUserGender;
+    }
+
+    public String getmPlaceName() {
+        return this.mPlaceName;
+    }
     private ThingyListener mThingyListener = new ThingyListener() {
 
         @Override
